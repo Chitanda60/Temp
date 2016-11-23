@@ -1,0 +1,60 @@
+.content {
+	.header {
+		border: {
+			radius: 5px;
+		}
+		@extend .c-white;
+	}
+}
+
+.c-white {
+	color: #fff;
+}
+
+@mixin left($value: 10px) {
+	float: left;
+	border-radius: $value;
+}
+.left {
+	@include left(20px);
+}
+
+@mixin rounded($vert, $horz, $radius: 10px) {
+	@if false {
+		border-radius: $radius;
+		-moz-border-radius: $radius;
+		-webkit-border-radius: $radius;
+	} @else {
+		border-#{$vert}-#{$horz}-radius: $radius;
+	    -moz-border-radius-#{$vert}-#{$horz}-radius: $radius;
+	    -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+	}	
+}
+
+.radius {
+	@include rounded(top, left);
+}
+
+@for $i from 1 to 10 {
+　　.border-#{$i} { 
+		border: #{$i}px solid blue; 
+	}
+}
+// $i = 0;
+// @while $i>0 {
+
+// }
+
+// $list = a, b, c, d;
+// @each $s in $list {
+
+// }
+
+// @import "./exam2.scss"
+
+@function double($n) {
+	@return $n * 2;
+}
+#sidebar {
+	width: double(5px);
+}

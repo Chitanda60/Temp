@@ -1,0 +1,308 @@
+@charset "utf-8";
+//
+// Copyright: JD
+// 重新整理 的一个 通用 sass 代码 ，还是挺好用的。
+// @author qileiwei
+///
+
+
+// 颜色
+$c_red: #e4393c;
+$c_blue: #3985ff;
+
+$c_arial : arial,sans-serif;
+
+// 文字省略：单行
+@mixin text_line( $num : false) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @if $num {
+        display: -webkit-box;
+        -webkit-line-clamp: $num;
+        -webkit-box-orient: vertical;
+    } @else {
+        white-space: nowrap;
+    }
+}
+
+@mixin radius( $radius ) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box {
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    display: -webkit-flex;
+}
+
+@mixin flex ($num : 1){
+    display: block;
+    flex: $num;
+    -webkit-flex: $num;
+    box-flex: $num;
+    -webkit-box-flex: $num;
+}
+
+// box-sizing
+@mixin border_box {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+// icon
+@mixin icon_inline( $size : 20 ,$block : false, $rem_flag : false) {
+
+    @if $rem_flag {
+        width: rem( $size ) ;
+        height: rem( $size ) ;
+    }@else {
+        width: $size * 1px ;
+        height: $size * 1px ;
+    }
+
+    @if $block {
+        display: block;
+    } @else {
+        display: inline-block;
+        vertical-align: middle;
+        @if $rem_flag {
+            margin-top: rem(-2);
+        }@else {
+            margin-top: -2px;
+        }
+    }
+}
+
+// 清除浮动
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '\20';
+        display: block;
+    }
+}
+
+$img_root : '';
+$img_version : false;
+@mixin img($path , $root : false , $version : false , $diy : true) {
+    @if $root == false {
+        $root : $img_root
+    }
+    @if $version {
+        $version : '?#{$version}'
+    } @else {
+        @if $img_version {
+            $version : '?#{$img_version}'
+        } @else {
+            $version :''
+        }
+    }
+
+    $url : '#{$root}#{$path}.png#{$version}';
+    background: url($url) no-repeat;
+    @if $diy {
+        background-size: 100%;
+    }
+}
+// 雪碧图 
+@mixin sprite( $path ){
+    @include img( $path )
+}
+
+// rem
+$rem_grid : 20;
+@function rem($val){
+    $rem : $val / $rem_grid;
+    @if $rem == 0 {
+        @return #{$rem};
+    }@else{
+        @return #{$rem};
+    }
+}
+// 媒体查询
+@mixin media( $limit ) {
+    @media screen and ( min-width: $limit){
+        &{
+            @content;
+        }
+    }
+}
+
+//rem box
+@mixin rem_box( $w , $h ) {
+    width: rem($w);
+    height: rem($h);
+}
+
+// 图片占位
+@mixin img_hold( $per : 100%) {
+    padding-top: $per;
+    height: 0;
+    overflow: hidden;
+    img{
+        margin-top:-1 * $per;
+        display: block;
+    }
+}
+
+@mixin img_hold_jd( $size : false) {
+    background:#f4f4f4 url('/fd/base/img/base/product_bg_200.png') center no-repeat;
+    @if $size == false {
+        background-size: 100px;
+    }@else{
+        background-size: $size;
+    }
+}
+
+@mixin border_1pt_btm( $color: #ddd, $width : 1 ){
+    content: '';
+    height: $width * 1px;
+    display: block;
+    background: $color ;
+    position: absolute;
+    pointer-events:none;
+    left:0;
+    right:0;
+    bottom:0;
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2){
+        &{
+          -webkit-transform:scaleY(0.5);
+          -webkit-transform-origin: 50% 100%;
+        }
+    }
+
+}
+
+@mixin border_1pt_top( $color: #ddd, $width : 1 ){
+    content: '';
+    height: $width * 1px;
+    display: block;
+    background: $color ;
+    position: absolute;
+    pointer-events:none;
+    left:0;
+    right:0;
+    top:0;
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2){
+        &{
+          -webkit-transform:scaleY(0.5);
+          -webkit-transform-origin: 50% 0%;
+        }
+    }
+
+}
+
+@mixin border_1pt_v( $color: #ddd, $width : 1 , $right : false){
+    content: '';
+    width: $width * 1px;
+    display: block;
+    background: $color ;
+    position: absolute;
+    pointer-events:none;
+
+    top:0;
+    bottom:0;
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2){
+        &{
+          -webkit-transform:scaleX(0.5);
+          @if $right == false {
+              -webkit-transform-origin: 0% 50%;
+          }@else{
+              -webkit-transform-origin: 100% 50%;
+          }
+        }
+    }
+
+}
+
+
+@mixin border_1pt( $color: #ddd, $width : 1 , $radius : 0){
+    content: '';
+    display: block;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom:0;
+    right: 0;
+    pointer-events:none;
+    border:1px solid $color;
+
+    @if $radius > 0 {
+        @include border_1pt_radius($radius)
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2){
+        &{
+            right: -100%;
+            bottom:-100%;
+            -webkit-transform:scale(0.5);
+            -webkit-transform-origin: 0% 0%;
+        }
+    }
+}
+
+@mixin border_1pt_radius( $top:0, $right:false, $btm:0, $left:0){
+
+    $round : false;
+
+    @if $right != false {
+        $round : true;
+    }
+
+    @if $round == false {
+        border-radius: $top*1px;
+    }@else{
+        border-radius: $top*1px $right*1px $btm*1px $left*1px;
+    }
+
+
+    @media only screen and (-webkit-min-device-pixel-ratio:2){
+        &{
+            @if $round == false {
+                border-radius: $top*2px ;
+            }@else{
+                border-radius: $top*2px $right*2px $btm*2px $left*2px;
+            }
+        }
+    }
+}
+
+
+// %for common
+// flex 布局
+%box {
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    display: -webkit-flex;
+}
+%flex {
+    display: block;
+    flex: 1;
+    -webkit-flex: 1;
+    box-flex: 1;
+    -webkit-box-flex: 1;
+}
+
+%text_oneline {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+%border_box {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+%clearfix {
+    &:after {
+        clear: both;
+        content: '\20';
+        display: block;
+    }
+}

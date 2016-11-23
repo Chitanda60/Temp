@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>	
+	<style type="text/css">		
+		[v-cloak] {
+			display: none;
+		}
+	</style>
+	<script src="./vue.min.js"></script>
+</head>
+<body id="hp">	
+<div id="moutnode">
+
+	<div id="moutnode">
+		<input v-model='msg'/>
+	</div>
+
+	<script>
+
+		// var child = Vue.component('child', {
+		// 	template: '<div>{{msg2}}</div>',
+		// 	data: function(){
+		// 		return {}
+		// 	},
+		// 	props: {
+		// 		msg2: String
+		// 	},
+		// 	methods: {}
+		// })
+
+		var vm = new Vue({
+			el: '#moutnode',
+			data: {
+				msg: 'hello'
+			},
+			methods: {
+				a: function(data){
+					console.log(data)
+				},
+				b: function(data){
+					console.log(data)
+				},
+				c: function(){
+					
+				}
+			},
+			watch: {
+				msg: function(){
+					console.log(this.msg)
+				}
+			},	
+			// 开始创建vue实例
+			init: function(){
+				console.log('init')
+			},
+			created: function(){
+				console.log('created')
+			},
+			// 还未开始dom编译
+			beforeCompile: function(){
+				console.log('beforeCompile')
+			},
+			compiled: function(){
+				console.log('compiled')
+			},
+			ready: function(){
+				console.log('ready')				
+			},
+			attached: function(){
+				console.log('attached')
+			},
+			detached: function(){
+				console.log('detached')
+			},
+			beforeDestroy: function(){
+				console.log('beforeDestroy')
+			},
+			destroyed: function(){
+				console.log('destroyed')
+			}			
+		})
+		console.log(vm.$data)
+		console.log(vm.$el)
+		console.log(vm.$options)
+		// console.log(vm.$els.msg.textContent)
+	</script>
+</body>
+</html>

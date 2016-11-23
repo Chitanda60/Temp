@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<style type="text/css">
+	/*双飞翼布局 start*/
+	body {
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		line-height: 60px;
+	}
+	.header,.footer {
+		width: 100%;
+		height: 60px;
+		background-color: #686872;
+		clear: both;
+	}
+	.left {
+		width: 150px;
+		height: 60px;
+		float: left;
+		background-color: #282736;
+		margin-left: -100%;
+	}
+	.main {
+		width: 100%;
+		height: 60px;
+		float: left;
+		background-color: #686872;
+	}
+	.right {
+		width: 150px;
+		height: 60px;
+		float: left;
+		background-color: #282736;
+		margin-left: -150px;
+	}
+	.inner {
+		margin-left: 150px;
+		margin-right: 150px;
+	}
+	/*end*/
+</style>
+</head>
+<body>
+	<!-- 双飞翼布局 start -->
+    <div class="header">header</div>
+    <div class="bg">    	
+    	<div class="main">
+	    	<div class="inner">main</div>
+	    </div>
+	    <div class="left">left</div>
+	    <div class="right">right</div>
+    </div>
+    <div class="footer">footer</div>
+	<!-- end -->
+	<script>
+		function List(){
+			this._data.push(ele)
+			for(var ele in arguments){
+				this._data.push(ele)
+			}
+			this.length = this._data.length
+		}
+		List.prototype = {
+			construct: List,
+			add: function(){
+				for(var ele in arguments){
+					this._data.push(ele)
+				}
+				this.length = this._data.length
+			}
+		}
+
+		function A(){
+			var count = 0;
+			return function(){
+				count++
+				console.log(count)
+				debugger;
+				return count
+			}
+		}
+		var B = A()
+		B()
+
+		// 二分查找
+		function binaryFind(arr, num, start, end){
+			if(start >= end){
+				return false
+			}
+			start = start || 0
+			end = end || arr.length
+			var mid = Math.floor((start + end)/2)
+			var midVal = arr[mid]	
+			if(midVal === num){
+				return 'index is' + mid
+			} else {
+				if(midVal > num){
+					return binaryFind(arr, num, 0, mid)
+				} else {
+					return binaryFind(arr, num, mid+1)
+				}
+			}
+		}
+
+		// url参数
+		function GetRequest() {
+		    var url = location.search;
+		    var theRequest = new Object();
+		    if (url.indexOf("?") != -1) {
+		        var str = url.substr(1);
+		        strs = str.split("&");
+		        for(var i = 0; i < strs.length; i ++) {
+		            theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+		        }
+		    }
+		    return theRequest;
+		}
+
+		// 监听器兼容性
+		function addHandler(target,eventType,handler){
+	    if(target.addEventListener){
+	        addHandler=function(target,eventType,handler){
+	            target.addEventListener(eventType,handler,false);
+	        }
+	    }else{
+	        addHandler=function(target,eventType,handler){
+	            target.attachEvent("on"+eventType,handler);
+	        }
+	    }	    
+	    addHandler(document.getElementById('*'),'click',function(){
+	    	alert(this.attribute['title'])
+	    });
+
+	    
+
+	}
+	</script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
