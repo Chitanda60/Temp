@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script>
+        window.pageStartTime = Date.now();
+    </script>
+    <title>test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <style type="text/css">
+        li, li button {padding: 10px;}
+    </style>
+</head>
+<body>
+<h1>demo</h1>
+<ul>
+    <li><button id="showNativeShare">showNativeShare</button></li>
+    <li><button id="hideNativeShare">hideNativeShare</button></li>
+    <li><button id="initShare">initShare all</button></li>
+    <li><button id="initShare2">initShare qq and wechat</button></li>
+    <li><button id="showShare">showShare qq and Wechat</button></li>
+
+    <li><button id="tracker">Tracker open detail: itemId 37998</button></li>
+
+    <li><button id="tracker">Tracker open detail: itemId 37998</button></li>
+    <li><button id="squareapplyFinish">squareapplyFinish</button></li>
+    <li><button id="square-applyFinish">square:applyFinish</button></li>
+</ul>
+
+<div id="text"></div>
+
+<script type="text/javascript">
+    window.ShareItem = {
+        'url' : location.href,
+        'title': 'test title',
+        'image': 'http://kongge.com/assets/index/images/banner.jpg',
+        'desc': 'test desc'
+    };
+
+        document.getElementById('initShare').addEventListener('click', function () {
+            WebViewJavascriptBridge.callHandler('initShare', {
+                "WechatTimeline": {
+                    "iconURL": "http://",
+                    "title": "share title",
+                    "content": "content",
+                    "url": "http://www.baidu.com"
+                },
+                "WechatSession": {
+                    "iconURL": "http://",
+                    "title": "share title WeChatSession",
+                    "content": "content WeChatSession",
+                    "url": "http://www.qq.com"
+                },
+                "Weibo": {
+                    "iconURL": "http://",
+                    "title": "share title Weibo",
+                    "content": "content Weibo",
+                    "url": "http://www.baidu.com"
+                },
+                "QQ": {
+                    "iconURL": "http://",
+                    "title": "share title qq",
+                    "content": "content qq",
+                    "url": "http://www.taobao.com"
+                }
+            }, function(response) {
+                alert(response);
+                // document.getElementById('text').innerHTML = JSON.stringify(ret);
+            });
+        }, false);
+        WebViewJavascriptBridge.callHandler('hideRefresh');
+        document.getElementById('showShare').addEventListener('click', function () {
+            WebViewJavascriptBridge.callHandler('showShare', null, function(response) {
+                document.getElementById('text').innerHTML = response;
+            });
+        }, false);
+
+
+</script>
+</body>
+</html>

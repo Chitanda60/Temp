@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">	
+		img {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+<script>
+	var myImage = (function(){
+		// 创建img标签并提供设置src的方法
+		var imgNode = document.createElement('img')
+		document.body.appendChild(imgNode)		
+		return {
+			setSrc: function(src){
+				imgNode.src = src
+			}
+		}
+	})()
+	var proxyImage = (function(){
+		var img = new Image()
+		// 当真正图片加载完时替换loading图
+		img.onload = function(){
+			myImage.setSrc(this.src)
+		}
+		return {
+			setSrc: function(src){
+				// 先使用loading图，并设置img的src为真正图片（开始加载真正图片）
+				myImage.setSrc('./images/loading.png')
+				img.src = src
+			}
+		}
+	})()
+	proxyImage.setSrc('./images/Auz.jpg')
+</script>
+</body>
+</html>
