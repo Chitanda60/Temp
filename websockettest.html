@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">	
+		.nl {
+
+		}
+	</style>
+</head>
+<body>
+<div>蛇莓</div>
+<!-- <button onclick="sendMessage();"></button> -->
+<div id="main" class="main"></div>
+<script type="text/javascript">
+	var domMain = document.getElementById('main')
+
+	// 创建一个WebSocket实例
+	var socket = new WebSocket('ws://10.1.133.143:3001');
+	// 内部连接建立就会触发onopen
+	socket.onopen = function() {
+		console.log('socket connected');
+		sendMessage();
+	}
+	// 事件接收来自服务器推送的消息
+	socket.onmessage = function(event) {
+		var data = event.data
+		receMessage(data)
+	}
+	// 连接出错
+	socket.onerror = function() {
+		console.log('socket error occurred')
+	}
+	// 可以用来处理服务端宕机和客户端连接中断时重新连接
+	socket.onclose = function() {
+		console.log('socket disconnected')
+	}
+	// 关闭连接
+	// socket.close();
+
+	function sendMessage() {
+		var number = 0;
+		setInterval(function() {
+			socket.send('message: ' + number++)
+		}, 1000);
+	}
+	function receMessage(data) {		
+		var div = document.createElement('div')
+		div.innerHTML = data;		
+		domMain.append(div);
+	}
+</script>
+</body>
+</html>

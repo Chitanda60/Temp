@@ -1,0 +1,27 @@
+{
+  "bitwise": true,
+  "curly": true,
+  "forin":true,
+  "latedef":"nofunc",
+  "undef":true,
+  "unused":true,
+  "noarg":ture,
+  "maxparams": 4,
+  "brower":true,
+  "continue":true,
+  "devel":true,
+  "indent": 2,
+  "maxerr":50,
+  "newcap":true,
+  "nomen": true,
+  "plusplus": true,
+  "sloppy": true,
+  "eqeqeq": true,
+  "maxlen": 120,
+  "vars": true,
+  "node": true,
+  "globals":{
+    "jQuery":true,
+    "$":true
+  }
+}

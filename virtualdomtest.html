@@ -16,19 +16,16 @@
  <script src="./lib/react-dom.js"></script>
  <script src="./lib/browser.min.js"></script>
  <script type="text/babel">
- 	const Test = () => { 		
- 		let x = {
- 			type: 'div',
- 			props: {
- 				children: '蛇莓'
- 			}
+ 	const Test = () => { 		 		
+ 		{
+ 			<!-- let y = (
+	 			<div>蛇莓</div>
+	 		) 		
+	 		return React.createElement('div', null, React.createElement('div', null, '蛇莓')) -->
  		}
- 		let y = (
+ 		return (
  			<div>蛇莓</div>
  		)
- 		console.log(x)
- 		console.log(y)
- 		return React.createElement('div', null, React.createElement('div', null, '蛇莓'))
  	}
 
 	ReactDOM.render(

@@ -15,7 +15,9 @@
   -webkit-border-top-left-radius: 10px; }
 
 　　.border-1 {
-  border: 1px solid blue; }
+  border: 1px solid blue;   
+
+}
 
 　　.border-2 {
   border: 2px solid blue; }
@@ -43,5 +45,3 @@
 
 #sidebar {
   width: 10px; }
-
-/*# sourceMappingURL=exam.css.map */
