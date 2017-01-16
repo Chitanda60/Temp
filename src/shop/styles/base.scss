@@ -1,0 +1,9 @@
+/**
+ * Created by shemei
+ */
+
+@import 'tool';
+
+.container {
+	@include responsive(margin, 12PX);
+}

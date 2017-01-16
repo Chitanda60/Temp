@@ -1,0 +1,117 @@
+/**
+ * Created by shemei
+ */
+
+@charset 'utf-8';
+
+$rem_grid : 20;
+
+// 三套样式
+@mixin responsive($property, $value){
+    #{$property}: $value;
+ 
+    [data-dpr="2"] & {
+        #{$property}: $value * 2;
+    }
+ 
+    [data-dpr="3"] & {
+        #{$property}: $value * 3;
+    }
+}
+
+@function rem($val){
+    $rem : $val / $rem_grid;
+    @if $rem == 0 {
+        @return #{$rem};
+    }@else{
+        @return #{$rem};
+    }
+}
+
+// 文字省略：单行
+@mixin ellipsis( $num : false) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @if $num {
+        display: -webkit-box;
+        -webkit-line-clamp: $num;
+        -webkit-box-orient: vertical;
+    } @else {
+        white-space: nowrap;
+    }
+}
+
+@mixin radius( $radius ) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box {
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    display: -webkit-flex;
+}
+
+@mixin flex ($num : 1){
+    display: block;
+    flex: $num;
+    -webkit-flex: $num;
+    box-flex: $num;
+    -webkit-box-flex: $num;
+}
+// icon
+@mixin icon_inline( $size : 20 ,$block : false, $rem_flag : false) {
+
+    @if $rem_flag {
+        width: rem( $size ) ;
+        height: rem( $size ) ;
+    }@else {
+        width: $size * 1px ;
+        height: $size * 1px ;
+    }
+
+    @if $block {
+        display: block;
+    } @else {
+        display: inline-block;
+        vertical-align: middle;
+        @if $rem_flag {
+            margin-top: rem(-2);
+        }@else {
+            margin-top: -2px;
+        }
+    }
+}
+
+// 清除浮动
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '\20';
+        display: block;
+    }
+}
+
+$img_root : '';
+$img_version : false;
+@mixin img($path , $root : false , $version : false , $diy : true) {
+    @if $root == false {
+        $root : $img_root
+    }
+    @if $version {
+        $version : '?#{$version}'
+    } @else {
+        @if $img_version {
+            $version : '?#{$img_version}'
+        } @else {
+            $version :''
+        }
+    }
+
+    $url : '#{$root}#{$path}.png#{$version}';
+    background: url($url) no-repeat;
+    @if $diy {
+        background-size: 100%;
+    }
+}

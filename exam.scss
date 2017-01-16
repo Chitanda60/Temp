@@ -36,7 +36,7 @@
 }
 
 @for $i from 1 to 10 {
-　　.border-#{$i} { 
+　　.border-#{$i}px {
 		border: #{$i}px solid blue; 
 	}
 }
@@ -56,5 +56,6 @@
 	@return $n * 2;
 }
 #sidebar {
-	width: double(5px);
+	width: double(5px);	
+	font-size: px2em(2px);
 }

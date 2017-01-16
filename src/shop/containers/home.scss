@@ -1,0 +1,38 @@
+/**
+ * Created by shemei
+ */
+
+@import "../styles/tool";
+
+.home {
+	text-align: center;	
+	@include responsive(font-size, 12PX);
+}
+
+.test-a {
+	.home & {
+		text-decoration: underline;
+	}
+	&:hover {
+		text-decoration: none;
+	}
+	&-slibe {
+		text-align: center;
+	}
+	font: {
+		size: 30px;
+	}
+}
+
+@for $i from 1 through 10 {
+	.foo:nth-of-type(#{$i}) {
+		border-color: hsl($i * 36, 50%, 50%);
+	}
+}
+
+$pages: home,about,products,contact;
+@each $item in $pages { 
+	.sec-#{$item} {
+		text-align: center;
+	}
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">	
+		
+	</style>
+</head>
+<body>
+<script>
+	// 接口隔离原则
+	// bad
+	class A {
+		constructor(setting) {
+			this.setting = setting
+			this.setup()
+		}
+
+		setup() {
+			this.ssa = this.setting.ssa
+			this.ssb = this.setting.ssb
+			this.ssc = this.setting.ssc
+		}
+	}
+
+	let a = new A({
+		ssa: 1,
+		ssb: 2,
+		ssc: 3
+	})
+	// good
+	class B {
+		constructor(setting) {
+			this.setting = setting
+			this.option = setting.option
+			this.setup()			
+		}
+
+		setup() {
+			// 只关心ssa 其他的交给setOption默认处理
+			this.ssa = this.setting.ssa
+			this.setOption()
+		}
+
+		setOption() {
+			this.ssb = this.option.ssb ? this.option.ssb : 0
+			this.ssc = this.option.ssc ? this.option.ssc : 0
+		}
+	}
+
+	let b = new B({
+		ssa: 1,
+		option: {
+			ssb: 2
+		}
+	})
+</script>
+</body>
+</html>
