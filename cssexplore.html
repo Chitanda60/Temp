@@ -6,6 +6,15 @@
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<title>Examples</title>
 	<style type="text/css">
+		.body {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+	<style type="text/css">
 		body {
 			/*--color: #f00;*/
 			/*background: #333;*/
@@ -840,12 +849,192 @@
 		}
 
 		.layout {
-			display: flex;
+			/*display: flex;
 			flex-flow: column;
-			min-height: 100vh;
+			min-height: 100vh;*/
 		}
 		.layout6_main {
 			flex: 1;
+		}
+	</style>
+	<style type="text/css">
+		.effect1 {			
+			width: 900px;
+			height: 400px;
+			background: #000;
+		}
+		.effect1_ball {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: #fff;
+			animation: falldown 3s cubic-bezier(.25,.1,.3,1.5);
+		}
+		@keyframes falldown {
+			from {
+				transform: translateY(0px);
+			}
+			to {
+				transform: translateY(350px);
+			}
+			/*60%, 80%, to {
+				transform: translateY(350px);
+				animation-timing-function: cubic-bezier(.215,.61,.355,1);
+			}
+			70% {
+				transform: translateY(250px);
+			}
+			90% {
+				transform: translateY(310px);
+			}*/			
+		}
+		input:not(:focus) + .callout:not(:hover) {
+			transform: scale(0);
+			transition: .25s transform;
+		}
+		.callout {
+			transition: .5s cubic-bezier(.25,.1,.3,1.5) transform;
+			transform-origin: 1.4em -.4em;
+		}
+		/* Styling */
+		/*body {
+			padding: 1.5em;
+			font: 200%/1.6 Baskerville;
+		}
+		input {
+			display: block;
+			padding: 0 .4em;
+			font: inherit;
+		}
+		.callout {	
+			position: absolute;
+			max-width: 14em;
+			padding: .6em .8em;
+			border-radius: .3em;
+			margin: .3em 0 0 -.2em;
+			background: #fed;
+			border: 1px solid rgba(0,0,0,.3);
+			box-shadow: .05em .2em .6em rgba(0,0,0,.2);
+			font-size: 75%;
+		}
+		.callout:before {
+			content: "";
+			position: absolute;
+			top: -.4em;
+			left: 1em;
+			padding: .35em;
+			background: inherit;
+			border: inherit;
+			border-right: 0;
+			border-bottom: 0;
+			transform: rotate(45deg);
+		}*/
+		
+		@keyframes loader {
+			to {
+				background-position: -400px 0;
+			}
+		}
+		.effect3 {
+			/*position: relative;*/
+		}
+		.effect3_loading {
+			width: 50px;
+			height: 50px;
+			background: url('./images/loading2.png') no-repeat 0 / cover;
+			animation: loader 1s infinite steps(8);
+		}
+		
+		@keyframes blink-smooth {
+			50% {
+				color: transparent;
+			}
+		}
+		.effect4_text {
+			animation: 1s blink-smooth 3 steps(1, end);
+		}
+		
+		
+		@keyframes typing {
+			from { width: 0 }
+		}
+
+		@keyframes caret {
+			50% { border-right-color: transparent; }
+		}
+
+		.effect5>h1 {
+			font: bold 200% Consolas, Monaco, monospace;
+			/*width: 8.25em;*/
+			width: 15ch;
+			white-space: nowrap;
+			overflow: hidden;
+			border-right: .05em solid;
+			animation: typing 8s steps(15),
+			           caret 1s steps(1) infinite;
+		}
+		
+		@keyframes move {
+			to { 
+				background-position: 100% 0; 
+			}
+		}
+		.panoramic {
+			width: 150px; height: 150px;
+			background: url('./images/Auz.jpg');
+			background-size: auto 100%;			
+			animation: move 3s linear infinite alternate paused;
+		}
+		.panoramic:hover {
+			-webkit-animation-play-state: running;
+		}
+		/*.effect6_img {
+			width: 150px;
+			height: 150px;
+			background: url('./images/Auz.jpg');
+			background-size: auto 100%;
+		}
+		.effect6_img:hover {
+			width: 200px;
+			transition: 1s width;			
+		}*/
+		
+		@keyframes spin {
+			to {
+				transform: rotate(1turn);
+			}
+		}
+		.effect7_path {
+			width: 300px; height: 300px;
+			padding: 20px;
+			border-radius: 50%;
+			background: #fb3;
+		}
+		.effect7_avator {
+			width: 50px;
+			margin: 0 auto;
+			border-radius: 50%;
+			overflow: hidden;
+			animation: spin 3s infinite linear;
+			transform-origin: 50% 150px;
+		}
+		.effect7_avator>img {
+			display: block;
+			width: inherit;
+			animation: inherit;
+			animation-direction: reverse;
+		}
+
+		@keyframes spin {
+			from {
+				transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn);
+			}
+			to {
+				transfrom: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn);
+			}
+		}
+		.avatar {			
+			animation: spin 3s infinite linear; 
 		}
 	</style>
 </head>
@@ -964,12 +1153,12 @@
 			<dd class="text5_dd">Earth</dd>
 		</dl> -->
 		<!-- 文本条形背景	-->
-		<!-- <div class="text6">1 line
+		<div class="text6">1 line
 			2 line
 			3 line
 			4 line
 			5 line
-		</div> -->
+		</div>
 		<!-- tab-size -->
 		<!-- <div class="text7">
 			<code>
@@ -1073,11 +1262,40 @@
 			<div class="layout5_content"></div>			
 		</div> -->
 		<!-- 页脚紧贴底部 -->
-		<div class="layout6_main"></div>
-		<div class="layout6_footer">The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.</div>
+		<!-- <div class="layout6_main"></div> -->
+		<!-- <div class="layout6_footer">The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.</div> -->
 	</div>
 	<div class="effect">
-		
+		<!-- 弹性动画 -->
+		<!-- <div class="effect1">
+			<div class="effect1_ball"></div>
+		</div> -->
+		<!-- <label class="effect2">
+			Your username: <input id="username" />
+			<span class="callout">Only letters, numbers, underscores (_) and hyphens (-) allowed!</span>
+		</label> -->
+		<!-- 逐帧动画 -->
+		<!-- <div class="body effect3">
+			<div class="effect3_loading"></div>
+		</div> -->
+		<!-- 闪烁效果 -->
+		<!-- <div class="body effect4">
+			<div class="effect4_text">蛇莓就是织夏</div>
+		</div> -->
+		<!-- 打字效果 -->
+		<!-- <div class="body effect5">
+			<h1>CSS is awesome!</h1>
+		</div> -->
+		<!-- 平滑往返过渡 -->
+		<!-- <div class="body effect6">
+			<div class="effect6_img panoramic"></div>
+		</div> -->
+		<!-- 旋转动画 -->
+		<div class="effect7_path">
+			<div class="effect7_avator">
+				<img src="./images/Aui.jpg" />
+			</div>
+		</div>
 	</div>
 	<script type="text/javascript">
 		function consoleText() {
