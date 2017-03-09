@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component, PropTypes} from 'react'
 
 class Son3 extends Component {
 	constructor(props) {
@@ -7,13 +7,27 @@ class Son3 extends Component {
 		this.state = props
 	}
 
+	getContext() {
+		return {
+			color: 'red'
+		}
+	}
+
 	render() {
 		const {email} = this.state;
+		const {color} = this.context;
 
 		return (
-			<div>{email}</div>
+			<div>
+				<div>{email}</div>
+				<div>{color}</div>
+			</div>
 		)
 	}
+}
+
+Son3.contextTypes = {
+	color: PropTypes.string
 }
 
 export default Son3
