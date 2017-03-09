@@ -7,6 +7,7 @@
 .home {
 	text-align: center;	
 	@include responsive(font-size, 12PX);
+	text-align: center;
 }
 
 .test-a {
@@ -22,6 +23,12 @@
 	font: {
 		size: 30px;
 	}
+}
+
+.forbidden_area {
+	width: 100px;
+	height: 100px;
+	background-color: #000;
 }
 
 @for $i from 1 through 10 {

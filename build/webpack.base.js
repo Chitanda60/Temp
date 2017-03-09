@@ -52,7 +52,7 @@ module.exports = {
       loader: extractCSS.extract(['css!postcss', 'less'])
     }, {
       test: /\.scss$/,
-      loader: extractCSS.extract(['css!postcss', 'sass'])
+      loader: extractCSS.extract(['css?modules!postcss', 'sass'])
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       loader: 'url',
