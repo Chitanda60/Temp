@@ -5,13 +5,23 @@
 import {Component, PropTypes} from 'react'
 import {findDOMNode} from 'react-dom'
 import {compose, pure, onlyUpdateForKeys} from 'recompose'
+// 性能检查工具 生产环境会去掉
+// import Perf from 'react-addons-perf'
 
 import Son1 from '../components/Son1'
 import Son2 from '../components/Son2'
+// PureComponent; is; context
 import Son3 from '../components/Son3'
 import Son4 from '../components/Son4'
+import Son5 from '../components/Son5'
+// Immutable; Cursor
+import Son6 from '../components/Son6'
+// createFragment
+import Son7 from '../components/Son7'
 
 import Style from './home.scss'
+
+const cls = {color: 'red'}
 
 const MyContainer = (WrappedComponent) => {
 	return class extends Component {
@@ -60,7 +70,11 @@ class Home extends Component {
 			name: '蛇莓',
 			age: 24,
 			email: 'shemei@shemei.com',
-			show: false
+			show: false,
+			node: {
+				first: ['1', '2', '3'],
+				second: ['a', 'b', 'c']
+			}			
 		}
 	}	
 
@@ -72,6 +86,7 @@ class Home extends Component {
 
 	onAlert() {	
 		const {show} = this.state
+
 		this.setState({
 			show: !show
 		})
@@ -117,16 +132,18 @@ class Home extends Component {
 	}
 
 	render() {
-		const {name, age, email, show} = this.state;
-		
+		const {name, age, email, node, show} = this.state		
 		return (
 			<div className={Style.home + ' ' + Style['fw-bold']}>
 				<a href="">你好</a>
-				<Son2 age={age} />
-				<Son3 ref="son1" email={email} />				
 				<Son1 name={name} />
+				<Son2 age={age} />
+				<Son3 ref="son1" email={email} style={cls} />
 				<HO_Son4 />
 				<HO_Son4_2 />
+				<Son5 />
+				<Son6 />
+				<Son7 {...node}/>
 				<div className={Style.button} onClick={::this.onAlert}>点击</div>
 				{
 					show ? (<div id="forbidden_area" className={Style['forbidden_area']}></div>) : null

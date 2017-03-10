@@ -1,5 +1,6 @@
 import {Component} from 'react'
 
+
 const Son1 = (props) => {
 	const {name} = props
 
