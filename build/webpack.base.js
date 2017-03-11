@@ -52,7 +52,7 @@ module.exports = {
       loader: extractCSS.extract(['css!postcss', 'less'])
     }, {
       test: /\.scss$/,
-      loader: extractCSS.extract(['css?modules!postcss', 'sass'])
+      loader: extractCSS.extract(['css?modules&localIdentName=[path][name]---[local]---[hash:base64:5]!postcss', 'sass'])
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       loader: 'url',
@@ -68,7 +68,8 @@ module.exports = {
   },
 
   babel: {
-    presets: ['stage-0', 'es2015', 'react']
+    presets: ['stage-0', 'es2015', 'react'],
+    plugins: ['transform-decorators-legacy']
   },
 
   reslove: {

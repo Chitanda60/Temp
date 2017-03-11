@@ -13,8 +13,10 @@
  <div id="shemei"></div>
  <script src="./lib/react.js"></script>
  <script src="./lib/react-dom.js"></script>
- <script src="./lib/browser.min.js"></script>
- <script src="https://unpkg.com/react@15/dist/react-with-addons.js"></script>
+ <script src="https://cdn.bootcss.com/react/0.14.7/react.js"></script>
+ <script src="https://cdn.bootcss.com/react/0.14.7/react-dom.js"></script>
+ <script src="https://cdn.bootcss.com/react/0.14.7/react-with-addons.js"></script>
+ <script src="./lib/browser.min.js"></script> 
  <script type="text/babel">
   //   var MyComponent = React.createClass({
   //   	getInitialState: function() {
@@ -45,14 +47,35 @@
   //     <MyComponent />,
   //     document.getElementById('shemei')
   //   )
-  
+  	// const pref = React.addons.Perf  	  	
+
   	class Test extends React.Component {
+  		constructor(props) {
+  			super(props)
+  			this.state = {
+  				name: '蛇莓'
+  			}
+  		}
+
+  		onAlert() {
+  			this.setState({
+  				name: '织夏'
+  			})
+  		}
+
   		render() {
-  			return <div>测试</div>
+  			const {name} = this.state
+
+  			return (
+  				<div>
+  					<div onClick={this.onAlert.bind(this)}>测试</div>
+  					<div>{name}</div>
+  				</div>  				
+  			)
   		}
   	}
-  
+  	
   	ReactDOM.render(<Test />, document.getElementById('shemei'))
- </script>
+</script>
 </body>
 </html>

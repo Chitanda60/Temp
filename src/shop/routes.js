@@ -11,7 +11,7 @@ const routes = {
       component: require('./containers/home').default,
     },    
     {
-      path: '/home/card',
+      path: '/card',
       component: require('./containers/card/index').default
     }
   ]

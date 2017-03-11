@@ -2,19 +2,19 @@ import {Component} from 'react'
 import Immutable from 'immutable'
 import Cursor from 'immutable/contrib/cursor'
 
-let data = Immutable.fromJS({
-	a: {
-		b: {
-			c: 1
-		}
-	}
-})
-let cursor = Cursor.from(data, ['a', 'b'], newData => {
-	console.log(newData)
-})
-console.log(cursor.get('c'))
-cursor = cursor.update('c', x => x + 1)
-console.log(cursor.get('c'))
+// let data = Immutable.fromJS({
+// 	a: {
+// 		b: {
+// 			c: 1
+// 		}
+// 	}
+// })
+// let cursor = Cursor.from(data, ['a', 'b'], newData => {
+// 	console.log(newData)
+// })
+// console.log(cursor.get('c'))
+// cursor = cursor.update('c', x => x + 1)
+// console.log(cursor.get('c'))
 
 const {Map} = Immutable
 
@@ -43,7 +43,7 @@ class Son6 extends Component {
 	render() {
 		const {data} = this.state		
 		console.log('Son6 render')
-
+		
 		return (
 			<div onClick={this.handleAdd.bind(this)}>Son6</div>
 		)
