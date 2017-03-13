@@ -18,64 +18,77 @@
  <script src="https://cdn.bootcss.com/react/0.14.7/react-with-addons.js"></script>
  <script src="./lib/browser.min.js"></script> 
  <script type="text/babel">
-  //   var MyComponent = React.createClass({
-  //   	getInitialState: function() {
-		//     return {
-		//     	name: '蛇莓'
-		//     }
-		// },
-		// componentDidMount: function() {
-		// 	let _this = this;
-		// 	this.setState({
-		// 		name: '织夏'
-		// 	})
-		// 	setTimeout(function() {
-		// 		_this.setState({
-		// 			name: '夏玲'
-		// 		})
-		// 	}, 1000)
-		// },
-  //     	render: function() {
-  //     		console.log('1');
-  //     	  	return (
-  //     	  	  <div>{this.state.name}</div>
-  //     	  	)
-  //     	}
-  //   });
-    
-  //   ReactDOM.render(
-  //     <MyComponent />,
-  //     document.getElementById('shemei')
-  //   )
-  	// const pref = React.addons.Perf  	  	
+    var MyComponent = React.createClass({
+    	  getInitialState: function() {
+    		    return {
+    		    	name: '蛇莓'
+    		    }
+    		},
+    		componentDidMount: function() {
+    			let _this = this;
+    			this.setState({
+    				name: '织夏'
+    			})
+    			setTimeout(function() {
+    				_this.setState({
+    					name: '夏玲'
+    				})
+    			}, 1000)
+    		},
+      	render: function() {
+      		console.log('1');
+      	  	return (
+              <div>
+                <div>{this.state.name}</div>
+                <div>织夏</div>
+                <MyCom2 />
+      	  	  </div>
+      	  	)
+      	}
+    });
 
-  	class Test extends React.Component {
-  		constructor(props) {
-  			super(props)
-  			this.state = {
-  				name: '蛇莓'
-  			}
-  		}
+    var MyCom2 = React.createClass({
+      render: function() {
+        return <div>蛇莓</div>
+      }
+    })
 
-  		onAlert() {
-  			this.setState({
-  				name: '织夏'
-  			})
-  		}
+    console.log(<MyComponent />)
+    console.log(<div><span></span></div>)
 
-  		render() {
-  			const {name} = this.state
+    ReactDOM.render(
+      <MyComponent />,
+      document.getElementById('shemei')
+    )
+  	const pref = React.addons.Perf  	  	
 
-  			return (
-  				<div>
-  					<div onClick={this.onAlert.bind(this)}>测试</div>
-  					<div>{name}</div>
-  				</div>  				
-  			)
-  		}
-  	}
+  	// class Test extends React.Component {
+  	// 	constructor(props) {
+  	// 		super(props)
+  	// 		this.state = {
+  	// 			name: '蛇莓'
+  	// 		}
+  	// 	}
+
+  	// 	onAlert() {
+  	// 		this.setState({
+  	// 			name: '织夏'
+  	// 		})
+  	// 	}
+
+  	// 	render() {
+  	// 		const {name} = this.state
+
+  	// 		return (
+  	// 			<div>
+  	// 				<div onClick={this.onAlert.bind(this)}>测试</div>
+  	// 				<div>{name}</div>
+  	// 			</div>  				
+  	// 		)
+  	// 	}
+  	// }
   	
-  	ReactDOM.render(<Test />, document.getElementById('shemei'))
+  	// ReactDOM.render(<Test />, document.getElementById('shemei'))
 </script>
 </body>
 </html>

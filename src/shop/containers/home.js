@@ -5,6 +5,9 @@
 import {Component, PropTypes} from 'react'
 import {findDOMNode} from 'react-dom'
 import {compose, pure, onlyUpdateForKeys} from 'recompose'
+
+// const LifeCycle = require('react-lifecycle')
+
 // 性能检查工具 生产环境会去掉
 // import Perf from 'react-addons-perf'
 
@@ -23,7 +26,7 @@ import Style from './home.scss'
 
 const cls = {color: 'red'}
 
-const MyContainer = (WrappedComponent) => {
+const MyContainer = (WrappedComponent) => {	
 	return class extends Component {
 		componentWillMount() {
 			console.log('这是逻辑包裹层')
@@ -63,7 +66,6 @@ const HO_Son4 = compose(MyContainer, MyContainer_2)(Son4)
 const HO_Son4_2 = MyContainer2(Son4)
 
 class Home extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {

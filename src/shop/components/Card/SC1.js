@@ -1,5 +1,7 @@
 import {Component} from 'react'
+import {immutableRenderDecorator} from 'react-immutable-render-mixin'
 
+@immutableRenderDecorator
 class SC1 extends Component {
 	constructor(props) {
 		super(props);
