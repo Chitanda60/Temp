@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">	
+		img {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+<!-- just for copy , dont.t touch it! -->
+	<h5>jpg</h5>
+	<img src="./images/Auz.jpg" alt="">
+
+	<h5>webp</h5>
+	<img src="./images/Auz.webp" alt="">
+
+	<script>		
+		(function(){
+			var WebP=new Image();
+			WebP.onload=WebP.onerror=function(){
+				if(WebP.height!=2){
+					var sc=document.createElement('script');
+					sc.type='text/javascript';
+					sc.async=true;
+					var s=document.getElementsByTagName('script')[0];
+					sc.src='./lib/webpjs.min.js';
+					s.parentNode.insertBefore(sc,s);
+				}
+			};
+			WebP.src='data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';}
+		)();	
+	</script>
+</body>
+</html>
