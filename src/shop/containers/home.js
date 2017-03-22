@@ -21,6 +21,8 @@ import Son5 from '../components/Son5'
 import Son6 from '../components/Son6'
 // createFragment
 import Son7 from '../components/Son7'
+// super&this
+import Son8 from '../components/Son8'
 
 import Style from './home.scss'
 
@@ -150,6 +152,7 @@ class Home extends Component {
 				{
 					show ? (<div id="forbidden_area" className={Style['forbidden_area']}></div>) : null
 				}
+				<Son8 name={name} />
 			</div>
 		)
 	}

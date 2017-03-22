@@ -4,19 +4,19 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {is} from 'immutable'
 
 class Son3 extends PureComponent {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		
 		this.state = props
 		// 升级shouldComponentUpdate
 		// this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
 	}
 
-	getContext() {
-		return {
-			color: 'red'
-		}
-	}
+	// getContext() {
+	// 	return {
+	// 		color: 'red'
+	// 	}
+	// }
 
 	// shouldComponentUpdate(nextProps, nextState) {
 	// 	const thisProps = this.props || {}
@@ -41,8 +41,8 @@ class Son3 extends PureComponent {
 	// 		}
 	// 	}
 	// }
-
-	render() {
+	
+	render() {		
 		const {email} = this.state
 		const {color} = this.context		
 		console.log('Son3 render')
