@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">	
+		
+	</style>
+</head>
+<body>
+<!-- just for copy , dont.t touch it! -->
+	<script src="./lib/browser.min.js"></script>
+	<script src="./lib/polyfill.min.js"></script>	
+	<script>
+		// 路由核心模块
+		const history = {
+			listeners: [],
+			listen: (listener) => {
+				history.listeners.push(listener)
+			},
+			updateLocation: () => {
+				// history.listeners
+				// debugger
+				history.listeners.forEach(listener => listener())
+			},
+		}
+		// 实例化路由
+		const Router = (history, routes) => {			
+			const _source = history
+			const _routes = routes			
+			_routes.forEach((route) => {
+				_source.listen(() => {
+					console.log(`切换到${route.path}`)
+				})
+			})
+			_source.updateLocation()
+		}
+		// 实例化组件
+		const Route = (path, component) => {
+			return {path, component}
+		}
+		Router(history, [Route('/user', 'UserPageComponent')])
+	</script>
+</body>
+</html>
