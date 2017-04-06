@@ -13,6 +13,10 @@ const routes = {
     {
       path: '/card',
       component: require('./containers/card/index').default
+    },
+    {
+      path: '/animation',
+      component: require('./containers/animation/index').default
     }
   ]
 }
