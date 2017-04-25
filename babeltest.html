@@ -11,8 +11,11 @@
 </head>
 <body>
 	<div id="shemei"></div>
-	<script src="./lib/browser.min.js"></script>
-	<script src="./lib/polyfill.min.js"></script>	
+	<!-- <script src="./lib/browser.min.js"></script> -->
+	<!-- <script src="./lib/polyfill.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/babel-core/6.1.19/browser.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-polyfill/7.0.0-alpha.7/polyfill.min.js"></script>
+	<script src="./lib/fetch.min.js"></script>
 	<script type="text/babel">
 
 		// Promise
@@ -108,26 +111,26 @@
 			yield 'zhi'
 			yield 'xia'
 		}
-		var ag = AGenerator()
+		// var ag = AGenerator()
+		// // console.log([...ag])
+		// console.log(ag.next())		
+		// // try {
+		// // 	ag.throw('a')
+		// // } catch(error) {
+		// // 	console.log('外部捕获:' + error)
+		// // }
+		// console.log(ag.next())
+		// console.log(ag.return('over'))
 		// console.log([...ag])
-		console.log(ag.next())		
-		// try {
-		// 	ag.throw('a')
-		// } catch(error) {
-		// 	console.log('外部捕获:' + error)
-		// }
-		console.log(ag.next())
-		console.log(ag.return('over'))
-		console.log([...ag])
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
-		console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
+		// console.log(ag.next())
 
 		// var a = {}
 		// a[Symbol.iterator] = function() {
@@ -142,6 +145,36 @@
 		// 	console.log(item)
 		// }
 		// console.log([...a])
+		
+		function* BGenerator () {
+			yield console.log('she')
+			yield console.log('mei')
+		}
+		var bg = BGenerator()
+		bg.next()
+		bg.next()
+		
+		console.log('async function')
+		const getJson = () => {
+			fetch('http://10.1.133.143:3000/message', {
+				method: 'GET'
+			}).then((res) => {
+				return res.json()
+			}).then((json) => {
+				console.log(json)
+				// return json
+			})
+		}
+
+		const makeRequest = async () => {
+			await getJson()
+			console.log("done")
+
+			return "done"
+		}
+
+		makeRequest()
+
 	</script>
 </body>
 </html>
