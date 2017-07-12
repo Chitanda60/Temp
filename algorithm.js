@@ -234,7 +234,18 @@ function classifyObject(array, propName) {
 	});
 	return arr;
 }
-console.log(classifyObject([{ id:1, num:1 },{ id:2, num:2 },{ id:1, num:2 },{ id:3, num:1 },{ id:1, num:1, date:3 },{ id:1, num:1 }], 'id'));
+// console.log(classifyObject([{ id:1, num:1 },{ id:2, num:2 },{ id:1, num:2 },{ id:3, num:1 },{ id:1, num:1, date:3 },{ id:1, num:1 }], 'id'));
+
+Object.prototype.clone = function(){
+	var o = this.constructor === Array ? [] : {}
+
+	for(var e in this){
+	    o[e] = typeof this[e] === "object" ? this[e].clone() : this[e]
+	}
+
+	return o
+}
+
 
 
 
