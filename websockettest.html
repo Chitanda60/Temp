@@ -1,3 +1,6 @@
+<!-- 
+* 客户端websocket链接 meal-server 中websocket服务
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +22,10 @@
 	var domMain = document.getElementById('main')
 
 	// 创建一个WebSocket实例
-	var socket = new WebSocket('ws://10.1.135.18:3001');
+	// var socket = new WebSocket('ws://10.1.135.18:3001');
+	// 火会员工程
+	var socket = new WebSocket('ws://10.1.5.52:9003');
+
 	// 内部连接建立就会触发onopen
 	socket.onopen = function() {
 		console.log('socket connected');
@@ -27,6 +33,7 @@
 	}
 	// 事件接收来自服务器推送的消息
 	socket.onmessage = function(event) {
+		console.log(event)
 		var data = event.data
 		receMessage(data)
 	}
