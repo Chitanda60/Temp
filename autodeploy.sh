@@ -1,3 +1,4 @@
+# gitlab & github 自动部署脚本
 #!/bin/bash
 
 WEB_PATH='/usr/share/nginx/html/fed'

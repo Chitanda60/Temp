@@ -236,6 +236,7 @@ function classifyObject(array, propName) {
 }
 // console.log(classifyObject([{ id:1, num:1 },{ id:2, num:2 },{ id:1, num:2 },{ id:3, num:1 },{ id:1, num:1, date:3 },{ id:1, num:1 }], 'id'));
 
+// 对象深克隆
 Object.prototype.clone = function(){
 	var o = this.constructor === Array ? [] : {}
 

@@ -1,3 +1,5 @@
+// gitlat&github 自动监控脚本
+
 var http = require('http')
 var createHandler = require('./node_modules/gitlab-webhook-handler/gitlab-webhook-handler.js')
 var handler = createHandler({ path: '/incoming'})
