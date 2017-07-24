@@ -999,7 +999,7 @@
 			transition: 1s width;			
 		}*/
 		
-		@keyframes spin {
+		/*@keyframes spin2 {
 			to {
 				transform: rotate(1turn);
 			}
@@ -1015,7 +1015,7 @@
 			margin: 0 auto;
 			border-radius: 50%;
 			overflow: hidden;
-			animation: spin 3s infinite linear;
+			animation: spin2 3s infinite linear;
 			transform-origin: 50% 150px;
 		}
 		.effect7_avator>img {
@@ -1023,19 +1023,31 @@
 			width: inherit;
 			animation: inherit;
 			animation-direction: reverse;
-		}
-
-		@keyframes spin {
+		}*/
+		@keyframes spin2 {
 			from {
 				transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn);
 			}
 			to {
-				transfrom: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn);
+				transform: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn);
 			}
+
+		}		
+		.effect7_path {
+			width: 300px; height: 300px;
+			padding: 20px;
+			margin: 100px auto;
+			border-radius: 50%;
+			background: #fb3;
 		}
-		.avatar {			
-			animation: spin 3s infinite linear; 
-		}
+		.effect7_avator {
+			display: block;
+			width: 50px;
+			margin: calc(50% - 25px) auto 0;
+			border-radius: 50%;
+			overflow: hidden;
+			animation: spin2 3s infinite linear
+		}		
 	</style>
 </head>
 <body>
@@ -1153,12 +1165,12 @@
 			<dd class="text5_dd">Earth</dd>
 		</dl> -->
 		<!-- 文本条形背景	-->
-		<div class="text6">1 line
+		<!-- <div class="text6">1 line
 			2 line
 			3 line
 			4 line
 			5 line
-		</div>
+		</div> -->
 		<!-- tab-size -->
 		<!-- <div class="text7">
 			<code>
@@ -1291,11 +1303,14 @@
 			<div class="effect6_img panoramic"></div>
 		</div> -->
 		<!-- 旋转动画 -->
-		<div class="effect7_path">
+		<!-- <div class="effect7_path">
 			<div class="effect7_avator">
 				<img src="./images/Aui.jpg" />
 			</div>
-		</div>
+		</div> -->
+		<!-- <div class="effect7_path">
+			<img class="effect7_avator" src="./images/Aui.jpg" />
+		</div> -->
 	</div>
 	<script type="text/javascript">
 		function consoleText() {

@@ -17,7 +17,7 @@
 			top: 10px;
 			left: 10px;
 			z-index: 2;
-			animation: move2 1s linear;
+			animation: move 2s linear;
 			background: red;
 		}
 	
@@ -32,16 +32,23 @@
 			from {
 				left: 30px;
 			}
-			to {
+			50% {
 				left: 230px;
 			}
+			to {
+				left: 30px;
+			}
 		}
+		/*开启硬件加速 相比move 更加流程*/
 		@keyframes move2 {
 			from { 
 				transform: translateX(0); 
-			} 
+			}
+			50% {
+				transform: translateX(200px);
+			}
 			to { 
-				transform: translateX(200px); 
+				transform: translateX(0); 
 			}
 		}
 	</style>
