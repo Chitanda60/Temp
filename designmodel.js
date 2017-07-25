@@ -1,3 +1,4 @@
+// javascript数据结构与算法 手记
 // 共享模式
 function f1(){
 	var Upload = function(uploadType){
@@ -58,7 +59,7 @@ function f1(){
 		}
 	})()
 	var id = 0
-	window.startUpload = function(uploadType, filƒes){
+	window.startUpload = function(uploadType, files){
 		for(var i = 0, file;file = files[i++];){
 			var uploadObj = uploadManager.add(++id, uploadType, file.fileName, file.fileSize)
 		}
@@ -135,7 +136,7 @@ function f3(){
 	plane = new AtomDescorator(plane)
 	plane.fire()
 
-	JS方法
+	// JS方法
 	var plane = {
 		fire: function(){
 			console.log('普通')
@@ -159,7 +160,7 @@ function f3(){
 	}
 	plane.fire();
 
-	考虑this指向
+	// 考虑this指向
 	Function.prototype.before = function(beforefn){
 		// 保存原函数的引用
 		var _self = this;

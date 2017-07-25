@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body id="body">
+	<script>
+		function f1(){
+			return true ? 'nextSuccessor' : 'failure'
+		}
+		function f2(){
+			return true ? 'nextSuccessor' : 'failure'
+		}
+		function f3(){
+			return 'over'
+		}
+		Function.prototype.after = function(fn){
+			var self = this
+
+			return function(){
+				var ret = self.apply(this, arguments)
+
+				if(ret === 'nextSuccessor') {
+					return fn.apply(this, arguments)
+				} else {
+					return ret
+				}				
+			}
+		}
+		var x = f1.after(f2).after(f3)
+
+	</script>
+</body>
+</html>
