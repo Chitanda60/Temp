@@ -247,6 +247,18 @@ Object.prototype.clone = function(){
 	return o
 }
 
+// 查找class
+function queryClassName(node, name) {			
+	var elements = node.getElementsByTagName('*')
+	var arr = []
+	for (var i = 0; i < elements.length; i++) {			
+		if (elements[i].className.indexOf(name) !== -1) {				
+			arr.push(elements[i])
+		}
+	}
+	return arr;
+}
+// console.log(queryClassName(document.getElementById('shemei'), 'shemei'));	
 
 
 

@@ -1,4 +1,14 @@
 // javascript数据结构与算法 手记
+
+// 单例模式
+function getSingle(fn) {
+	var result
+
+	return function() {
+		return result || result = fn.apply(this, arguments)
+	}
+}
+
 // 共享模式
 function f1(){
 	var Upload = function(uploadType){
