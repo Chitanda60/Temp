@@ -4,10 +4,13 @@ function checkPalindrom(str) {
 }
 
 // 数组去重
+// set + ...运算符
 // function unique1(arr){
 // 	var set = new Set(arr)
 // 	return [...set]
 // }
+
+// 每个字符在数组里查找一遍 否则添加
 function unique2(arr) {
 	var n = []
 	for (var i = 0; i < arr.length; i++) {
@@ -18,6 +21,7 @@ function unique2(arr) {
 	return n;
 }
 
+// 用一个额外对象保存某字符是否已经存在
 function unique3(arr) {	
 	var n = {},
 		r = []
@@ -30,6 +34,7 @@ function unique3(arr) {
 	return r
 }
 
+// 第i个字符的index是i
 function unique4(arr) {
 	var n = []
 	for (var i = 0; i < arr.length; i++) {
@@ -40,10 +45,12 @@ function unique4(arr) {
 	return n
 }
 
+
 function unique5(arr) {
 	var n = []
 	n.push(arr[0])
 	for (var i = 1; i < arr.length; i++) {
+		console.log(n[n.length - 1])
 		if (arr[i] !== n[n.length - 1]) {
 			n.push(arr[i])
 		}
@@ -51,6 +58,7 @@ function unique5(arr) {
 	return n
 }
 // console.log(unique5([3,1,2,2,3,4,5]))
+unique5([3,1,2,2,3,4,5])
 
 // 查找字符串中重复字数最多的字母
 function findMaxDuplicateChar(str) {
