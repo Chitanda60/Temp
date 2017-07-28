@@ -22,6 +22,7 @@ function unique2(arr) {
 }
 
 // 用一个额外对象保存某字符是否已经存在
+// 遍历对象属性性能优于遍历数组元素
 function unique3(arr) {	
 	var n = {},
 		r = []
@@ -45,20 +46,7 @@ function unique4(arr) {
 	return n
 }
 
-
-function unique5(arr) {
-	var n = []
-	n.push(arr[0])
-	for (var i = 1; i < arr.length; i++) {
-		console.log(n[n.length - 1])
-		if (arr[i] !== n[n.length - 1]) {
-			n.push(arr[i])
-		}
-	}
-	return n
-}
-// console.log(unique5([3,1,2,2,3,4,5]))
-// unique5([3,1,2,2,3,4,5])
+// unique4([3,1,2,2,3,4,5])
 
 // 查找字符串中重复字数最多的字母
 function findMaxDuplicateChar(str) {
@@ -127,11 +115,11 @@ function quickSort(arr) {
 	}
 	return quickSort(left).concat([piovt], quickSort(right))
 }
-// 2, 3, 1
 // 插入排序:将待排序元素与已排序元素从后往前逐一比较直到找到合适的位置插入
 function insertSort(arr) {
-	var temp;
+	var temp;	
 	for (var i = 1; i < arr.length; i++) {
+		// 每个元素与前一个元素进行对比
 		if (arr[i - 1] > arr[i]) {
 			temp = arr[i]
 			for (var j = i - 1; j >= 0 && arr[j] > temp; j--) {
@@ -144,18 +132,22 @@ function insertSort(arr) {
 }
 // 希尔排序：设置一个从大到小的间隔序列，并以此间隔进行多轮处理
 function shellSort(arr) {
+	console.log('length:', arr.length)
 	var h = 1;
+	// 设置间隔序列
 	while (h < arr.length / 3) {		
 		h = h * 3 + 1
 	}
 	while (h >= 1) {
 		console.log('h:', h)
-		for (var i = h; i < arr.length; i += h) {
-			for (var j = i; j >= h && arr[j - h] > arr[j]; j -= h) {
+		for (var i = h; i < arr.length; i += 1) {
+			console.log('i', i)
+			for (var j = i; j > 0 && arr[j - h] > arr[j]; j -= h) {
 				change(arr, j - h, j)
 			}
 		}
 		h = (h - 1) / 3
+
 	}
 	return arr;
 }
@@ -165,7 +157,7 @@ function change(arr, a, b) {
 	arr[a] = arr[b]
 	arr[b] = temp
 }
-console.log(shellSort([3, 1, 2, 3, 5, 1, 8, 6]));
+// console.log(shellSort([3, 1, 2, 3, 5, 1, 8, 6, 4, 4, 6]));
 
 // 最大正数差
 function getMaxProfit1(arr) {
@@ -208,7 +200,6 @@ Object.prototype.clone = function(){
 
 	return o
 }
-
 
 
 
