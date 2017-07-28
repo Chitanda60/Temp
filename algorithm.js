@@ -58,7 +58,7 @@ function unique5(arr) {
 	return n
 }
 // console.log(unique5([3,1,2,2,3,4,5]))
-unique5([3,1,2,2,3,4,5])
+// unique5([3,1,2,2,3,4,5])
 
 // 查找字符串中重复字数最多的字母
 function findMaxDuplicateChar(str) {
@@ -127,7 +127,8 @@ function quickSort(arr) {
 	}
 	return quickSort(left).concat([piovt], quickSort(right))
 }
-// 插入排序:将待排序元素与已排序元素逐一比较知道找到合适的位置插入
+// 2, 3, 1
+// 插入排序:将待排序元素与已排序元素从后往前逐一比较直到找到合适的位置插入
 function insertSort(arr) {
 	var temp;
 	for (var i = 1; i < arr.length; i++) {
@@ -136,24 +137,19 @@ function insertSort(arr) {
 			for (var j = i - 1; j >= 0 && arr[j] > temp; j--) {
 				arr[j + 1] = arr[j]
 			}
-			arr[j + 1] = temp
-				// for (var j = i - 1; j >= 0 && arr[j] > temp ; j--) {				
-				// 	if (arr[j - 1] <= temp || j === 0) {
-				// 		arr.splice(i, 1)
-				// 		arr.splice(j, 0, temp)					
-				// 	}
-				// }			
+			arr[j + 1] = temp						
 		}
 	}
 	return arr;
 }
-// 希尔排序：设置一个间隔序列，并以此间隔进行多轮处理
+// 希尔排序：设置一个从大到小的间隔序列，并以此间隔进行多轮处理
 function shellSort(arr) {
 	var h = 1;
-	while (h < arr.length / 3) {
+	while (h < arr.length / 3) {		
 		h = h * 3 + 1
 	}
 	while (h >= 1) {
+		console.log('h:', h)
 		for (var i = h; i < arr.length; i += h) {
 			for (var j = i; j >= h && arr[j - h] > arr[j]; j -= h) {
 				change(arr, j - h, j)
@@ -169,7 +165,7 @@ function change(arr, a, b) {
 	arr[a] = arr[b]
 	arr[b] = temp
 }
-// console.log(insertSort([3, 1, 2, 3, 5, 1, 8, 6]));
+console.log(shellSort([3, 1, 2, 3, 5, 1, 8, 6]));
 
 // 最大正数差
 function getMaxProfit1(arr) {
@@ -202,48 +198,6 @@ function queryClassName(node, name) {
 }
 // console.log(queryClassName(document.getElementById('shemei'), 'shemei'));
 
-// 合并多个对象
-function assignObject(array){
-	var objs = Object.assign({}, array[0]);
-	if (array.length > 1) {
-		for (var i = 1, obj; i < array.length; i++) {
-			obj = array[i];
-			Object.keys(obj).forEach(function(index){
-				if (objs.hasOwnProperty(index)) {
-					objs[index] = objs[index] + obj[index]					
-				} else {
-					objs[index] = obj[index]					
-				}
-			});
-		}
-	}
-	return objs;
-}
-// 按propName分类
-function classifyObject(array, propName) {
-	var map = new Map();
-	var arr = [];
-	for (var i = 0, obj; i < array.length; i++) {
-		obj = array[i];
-		Object.keys(obj).forEach(function(index){
-			if (index === propName) {
-				if (map.has(obj[index])) {
-					map.set(obj[index], assignObject([map.get(obj[index]), obj]))
-				} else {
-					map.set(obj[index], obj)
-				}
-			}
-		})
-	}
-	// 重置id
-	map.forEach(function(value, key, map) {
-	 	value[propName] = key
-	  	arr.push(value)
-	});
-	return arr;
-}
-// console.log(classifyObject([{ id:1, num:1 },{ id:2, num:2 },{ id:1, num:2 },{ id:3, num:1 },{ id:1, num:1, date:3 },{ id:1, num:1 }], 'id'));
-
 // 对象深克隆
 Object.prototype.clone = function(){
 	var o = this.constructor === Array ? [] : {}
@@ -254,19 +208,6 @@ Object.prototype.clone = function(){
 
 	return o
 }
-
-// 查找class
-function queryClassName(node, name) {			
-	var elements = node.getElementsByTagName('*')
-	var arr = []
-	for (var i = 0; i < elements.length; i++) {			
-		if (elements[i].className.indexOf(name) !== -1) {				
-			arr.push(elements[i])
-		}
-	}
-	return arr;
-}
-// console.log(queryClassName(document.getElementById('shemei'), 'shemei'));	
 
 
 
