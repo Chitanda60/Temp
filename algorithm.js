@@ -192,6 +192,8 @@ function queryClassName(node, name) {
 
 // 对象深克隆
 Object.prototype.clone = function(){
+	// var newObj = JSON.parse(JSON.stringify(obj));  
+	
 	var o = this.constructor === Array ? [] : {}
 
 	for(var e in this){
@@ -200,6 +202,7 @@ Object.prototype.clone = function(){
 
 	return o
 }
+
 
 
 
