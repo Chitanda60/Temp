@@ -32,12 +32,14 @@
 			width: 100px;
 			height: 100px;
 			background-color: black;
-		}
+		}		
 	</style>
 </head>
 <body id="body">
 	<div id="wapper" class="wapper">
-		<div id="box1" class="box1"></div>
+		<div id="box1" class="box1">
+			<div id="box11"></div>
+		</div>
 	</div>
 	<div class="box2"></div>
 </body>
@@ -55,6 +57,10 @@
 	// }, 2000)
 	
 	var dom = document.getElementById('wapper')
-	console.log(dom.nextSibling)
+	
+	function zx() {
+		console.trace()
+	}
+	zx()
 </script>
 </html>
