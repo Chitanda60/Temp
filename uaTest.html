@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Examples</title>
+	<style type="text/css">	
+		
+	</style>
+</head>
+<body>
+<!-- just for copy , dont.t touch it! -->
+	<div id="ua"></div>
+	<div id="ub"></div>
+	<script>		
+		document.getElementById('ua').innerHTML = navigator.userAgent
+		// document.getElementById('ua').innerHTML = navigator.vendor
+		// document.getElementById('ua').innerHTML = window.opera
+		document.getElementById('ub').innerHTML = (navigator.browserLanguage || navigator.language)
+	</script>	
+</body>
+</html>
