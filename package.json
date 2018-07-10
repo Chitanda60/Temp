@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "dev": "node build/server.js",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "anywhere": "anywhere -s -p 9000"
   },
   "author": "shemei",
   "devDependencies": {

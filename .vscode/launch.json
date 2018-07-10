@@ -3,13 +3,29 @@
     // 悬停以查看现有属性的描述。
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [        
+    "configurations": [
         {
-            "name": "Launch localhost",
+            "type": "chrome",
+            "request": "attach",
+            "name": "监听一个已经启动调试模式的 Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}/frontend",
+            "sourceMaps": true
+        },
+        {
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:8001/temp/debuggerTest.html",
-            "webRoot": "${workspaceFolder}"
-        },           
+            "name": "启动一个独立的 Chrome 以调试",
+            "url": "http://localhost:9000/debuggerTest.html",
+            // "url": "http://localhost:8001/temp/debuggerTest.html",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "附加于已启动的 Node 服务器（inspect模式）",
+            "port": 9229,
+            "restart": true
+        },
     ]
 }
