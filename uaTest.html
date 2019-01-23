@@ -11,13 +11,24 @@
 </head>
 <body>
 <!-- just for copy , dont.t touch it! -->
-	<div id="ua"></div>
+	<div id="ua">fish</div>
 	<div id="ub"></div>
 	<script>		
 		document.getElementById('ua').innerHTML = navigator.userAgent
 		// document.getElementById('ua').innerHTML = navigator.vendor
 		// document.getElementById('ua').innerHTML = window.opera
-		document.getElementById('ub').innerHTML = (navigator.browserLanguage || navigator.language)
-	</script>	
+		document.getElementById('ub').innerHTML = (navigator.browserLanguage || navigator.language)		
+
+		// document.getElementById('ua').addEventListener('click', function() {
+		// 	history.pushState('zhixia', null)
+		// 	document.getElementById('ua').innerHTML = 'zhixia'
+		// })
+
+		// window.onpopstate = function(event) {
+		// 	if(event.state === 'zhixia') {
+		// 		document.getElementById('ua').innerHTML = 'fish'
+		// 	}			
+		// }		
+	</script>
 </body>
 </html>
