@@ -1,3 +1,4 @@
+
 // 判断两个对象相等
 function checkObjEqual(obj1, obj2) {
     return JSON.stringify(obj1) === JSON.stringify(obj2)
@@ -71,15 +72,14 @@ function findMaxDuplicateChar(str) {
 	for (var i in n) {
 		if (n[i] > max) {
 			max = n[i]
-			m = []
-			m.push(i)
+			m = [i]
 		} else if (n[i] === max) {
 			m.push(i)
 		}
 	}
 	return m;
 }
-// console.log(findMaxDuplicateChar('fish is live'));
+// console.log(findMaxDuplicateChar('fish is dead'));
 
 // 不借助变量交换两个整数
 function swap(num1, num2) {
@@ -93,7 +93,7 @@ function swap(num1, num2) {
 }
 // console.log(swap(1,5))
 
-// 冒泡排序
+// 冒泡排序：每次内循环把从i开始的最小的值换到i位置，直到外循环结束
 function bubbleSort(arr) {
 	for (var i = 0; i < arr.length; i++) {
 		for (var j = i + 1; j < arr.length; j++) {
@@ -101,10 +101,11 @@ function bubbleSort(arr) {
 				change(arr, i, j)
 			}
 		}
+		return
 	}
 	return arr;
 }
-// 快速排序
+// 快速排序：取出中点递归分类大小列表最后合并
 function quickSort(arr) {
 	if (arr.length <= 1) {
 		return arr;
@@ -122,7 +123,7 @@ function quickSort(arr) {
 	}
 	return quickSort(left).concat([piovt], quickSort(right))
 }
-// 插入排序:将待排序元素与已排序元素从后往前逐一比较直到找到合适的位置插入
+// 插入排序：将待排序元素与已排序元素从后往前逐一比较直到找到合适的位置插入
 function insertSort(arr) {
 	var temp;	
 	for (var i = 1; i < arr.length; i++) {
@@ -148,9 +149,9 @@ function shellSort(arr) {
 	while (h >= 1) {
 		console.log('h:', h)
 		for (var i = h; i < arr.length; i += 1) {
-			console.log('i', i)
-			for (var j = i; j > 0 && arr[j - h] > arr[j]; j -= h) {
-				change(arr, j - h, j)
+			console.log('i', i)			
+			for (var j = i; j > 0 && arr[j - h] > arr[j]; j -= h) {				
+				change(arr, j - h, j)	
 			}
 		}
 		h = (h - 1) / 3
@@ -175,7 +176,7 @@ function getMaxProfit1(arr) {
 function getMaxProfit2(arr) {
 	var minNum = arr[0],
 		maxProfit = 0,
-		curProfit
+		curProfit = 0
 	for (var i = 1; i < arr.length; i++) {
 		minNum = Math.min(minNum, arr[i])
 		curProfit = arr[i] - minNum
