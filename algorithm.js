@@ -1,14 +1,21 @@
+// 判断两个对象相等
+function checkObjEqual(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2)
+}
+
 // 判断回文
 function checkPalindrom(str) {
 	return str === str.split('').reverse().join('')
 }
 
 // 数组去重
-// set + ...运算符
-// function unique1(arr){
-// 	var set = new Set(arr)
-// 	return [...set]
-// }
+// set + ...运算符||Array.from
+function unique1(arr){
+	var set = new Set(arr)
+    return [...set]
+    // 或者
+    // return Array.from(set)
+}
 
 // 每个字符在数组里查找一遍 否则添加
 function unique2(arr) {
