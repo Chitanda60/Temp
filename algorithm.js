@@ -33,7 +33,7 @@ function unique2(arr) {
 function unique3(arr) {	
 	var n = {},
 		r = []
-	for (var i = 0, j; i < arr.length; i++) {
+	for (var i = 0; i < arr.length; i++) {
 		if (!n[arr[i]]) {
 			n[arr[i]] = true
 			r.push(arr[i]);
@@ -79,7 +79,7 @@ function findMaxDuplicateChar(str) {
 	}
 	return m;
 }
-// console.log(findMaxDuplicateChar('fish is dead'));
+// console.log(findMaxDuplicateChar('fish is live'));
 
 // 不借助变量交换两个整数
 function swap(num1, num2) {
