@@ -1,4 +1,5 @@
 
+// JS实现一些常见算法
 // 判断两个对象相等
 function checkObjEqual(obj1, obj2) {
     return JSON.stringify(obj1) === JSON.stringify(obj2)
@@ -167,6 +168,26 @@ function change(arr, a, b) {
 }
 // console.log(shellSort([3, 1, 2, 3, 5, 1, 8, 6, 4, 4, 6]));
 
+// 二分查找：未处理重复情况
+function binarySerach(arr, key) {
+	arr = arr.sort()
+	var left = 0
+	var right = arr.length - 1
+	var piov = Math.floor((left + right) / 2)
+
+	while (key !== arr[piov]) {
+		if (key > arr[piov]) {
+			left = piov + 1
+		} else {
+			right = piov - 1
+		}
+
+		piov = Math.floor((left + right) / 2)
+	}
+
+	return piov
+}
+
 // 最大正数差
 function getMaxProfit1(arr) {
 	arr.sort();
@@ -201,7 +222,7 @@ function queryClassName(node, name) {
 // 对象深克隆
 Object.prototype.clone = function(){
 	// var newObj = JSON.parse(JSON.stringify(obj));  
-	
+
 	var o = this.constructor === Array ? [] : {}
 
 	for(var e in this){
