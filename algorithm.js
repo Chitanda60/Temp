@@ -94,7 +94,7 @@ function swap(num1, num2) {
 }
 // console.log(swap(1,5))
 
-// 冒泡排序：每次内循环把从i开始的最小的值换到i位置，直到外循环结束
+// 冒泡排序：每次内循环把从i开始的最大或最小的值换到i位置，直到外循环结束
 function bubbleSort(arr) {
 	for (var i = 0; i < arr.length; i++) {
 		for (var j = i + 1; j < arr.length; j++) {
@@ -124,7 +124,7 @@ function quickSort(arr) {
 	}
 	return quickSort(left).concat([piovt], quickSort(right))
 }
-// 插入排序：将待排序元素与已排序元素从后往前逐一比较直到找到合适的位置插入
+// 插入排序：将待排序元素与已排序元素从后往前逐一比较直到找到合适的位置插入（比它大的往后移一位）
 function insertSort(arr) {
 	var temp;	
 	for (var i = 1; i < arr.length; i++) {
@@ -161,10 +161,12 @@ function shellSort(arr) {
 	return arr;
 }
 
+let changeTime = 0
 function change(arr, a, b) {
 	var temp = arr[a]
 	arr[a] = arr[b]
 	arr[b] = temp
+	changeTime += 1
 }
 // console.log(shellSort([3, 1, 2, 3, 5, 1, 8, 6, 4, 4, 6]));
 
@@ -221,8 +223,9 @@ function queryClassName(node, name) {
 
 // 对象深克隆
 Object.prototype.clone = function(){
+	// 函数、undefined、symbol不能正常stringify化
 	// var newObj = JSON.parse(JSON.stringify(obj));  
-
+	
 	var o = this.constructor === Array ? [] : {}
 
 	for(var e in this){
@@ -230,6 +233,22 @@ Object.prototype.clone = function(){
 	}
 
 	return o
+}
+
+// 正则实现trim
+if (!String.prototype.trim) {
+	String.prototype.trim = function () {
+	  	return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
+	}
+}
+
+// 深克隆、不包含函数时可以使用、异步
+function structuralClone(obj) {
+	return new Promise(resolve => {
+		const {port1, port2} = new MessageChannel();
+		port2.onmessage = ev => resolve(ev.data);
+		port1.postMessage(obj);
+	});
 }
 
 
